@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - loremipsum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrollbars from appearing on body */
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        main {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent for a nice effect */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+            max-height: 90vh; /* Limit height to prevent overflow */
+            overflow-y: auto; /* Allow vertical scrolling */
+            margin: 20px; /* Space around the main content */
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        .member {
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .member:hover {
+            background-color: #e9f7ff;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #777;
+            position: relative;
+            z-index: 2;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Make sure canvas is behind other content */
+        }
+        a{
+            color:black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Us</h1>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>Welcome to loremipsum</h2>
+            <p>Where design meets innovation! I am <strong>Arnav Vashisth</strong> ,dedicated to transforming the way designers approach their craft.</p>
+        </section>
+        <section class="inspiration">
+            <h2>Our Inspiration</h2>
+            <p>Just as Lorem Ipsum was originally created to help designers visualize without the distraction of content, our tool allows designers to upload wireframes and convert them into functional code effortlessly, freeing them from the codeability concerns of their designs.</p>
+        </section>
+        <section class="vision">
+            <h2>Our Vision</h2>
+            <p>At loremipsum, I believe that design should never be compromised by technical constraints. Our platform automatically generates code that is compatible across multiple frameworks, allowing designers to focus on delivering exceptional user experiences.</p>
+        </section>
+        <section class="team">
+            <h2>Meet the Team</h2>
+            <a href="https://arnavvashisthcodingaccountnew.github.io/">
+            <div class="member">
+                <h3>Arnav Vashisth</h3>
+                <p>A front-end wizard with a passion for aesthetics. His mission? To make every design intuitive and beautiful.</p>
+            </div></a>
+          
+        </section>
+        <section class="call-to-action">
+            <h2>Made with ❤️ at CodeDay</h2>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 loremipsum. All Rights Reserved.</p>
+        <p>Thanks to Codeday for helping us hack!</p>
+    </footer>
+
+    <!-- Three.js Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Create a dynamic background
+        const geometry = new THREE.SphereGeometry(50, 32, 32);
+        const material = new THREE.MeshBasicMaterial({ color: 0x007bff, wireframe: true });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        // Create rotating cubes
+        const cubeGeometry = new THREE.BoxGeometry();
+        const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
+        
+        for (let i = 0; i < 50; i++) {
+            const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            cube.position.x = Math.random() * 20 - 10;
+            cube.position.y = Math.random() * 20 - 10;
+            cube.position.z = Math.random() * 20 - 10;
+            cube.rotation.x = Math.random() * Math.PI;
+            cube.rotation.y = Math.random() * Math.PI;
+            scene.add(cube);
+        }
+
+        camera.position.z = 5;
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            sphere.rotation.y += 0.001; // Rotate the background sphere
+            scene.traverse((object) => {
+                if (object.isMesh && object.geometry.type === "BoxGeometry") {
+                    object.rotation.x += 0.01;
+                    object.rotation.y += 0.01;
+                }
+            });
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
+</html>

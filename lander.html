@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        const title = "Welcome to Our Amazing Site!";
+const text = "Experience brilliance in every click.";
+const titleElement = document.getElementById('typewriter-title');
+const textElement = document.getElementById('typewriter-text');
+
+function typeWriter(element, text, delay) {
+    let index = 0;
+    function type() {
+        if (index < text.length) {
+            element.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, delay);
+        }
+    }
+    type();
+}
+
+
+// Start the typewriter effect
+typeWriter(titleElement, title, 100);
+setTimeout(() => typeWriter(textElement, text, 50), title.length * 100 + 500);
+
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorem Ipsum</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <style>
+        .hero-section {
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid orange;
+    animation: caret-blink 0.75s step-end infinite;
+    text-align: center; /* Center the text */
+    margin-top: 20px; /* Add margin for spacing */
+}
+
+.cta-button {
+    background-color: #ff4081; /* Bright pink */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-size: 1.2em;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.cta-button:hover {
+    background-color: #e91e63; /* Darker pink on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+@keyframes caret-blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+      .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px; /* Adjust this as needed */
+    background-color: #2196F3;
+    padding: 10px; /* Ensure padding is adequate */
+    max-width: 1200px; /* This limits the width */
+    margin: 0 auto; /* Center the container */
+}
+
+
+.button-now {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-now:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.button-now:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 20px;
+    border: none;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden; /* Prevent overflow of card content */
+}
+.hero-section {
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for typewriting effect */
+    overflow: hidden; /* Ensures text doesn't overflow */
+    white-space: nowrap; /* Prevents text wrapping */
+    border-right: .15em solid orange; /* Cursor effect */
+    animation: caret-blink 0.75s step-end infinite; /* Blinking caret animation */
+}
+h1 {
+            font-size: 90px;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typewriter 2s steps(13) infinite alternate,
+                blink 800ms steps(13) infinite normal;
+            border-right: 5px solid black;
+        }
+
+        @keyframes typewriter {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: 120%;
+            }
+        }
+
+        @keyframes blink {
+            from {
+                border-color: black;
+            }
+
+            to {
+                border-color: transparent;
+            }
+        }
+
+@keyframes caret-blink {
+    120% {
+        border-color: transparent; /* Blink effect */
+    }
+}
+
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            padding: 20px;
+            border: none;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .card-text {
+            color: #6c757d;
+            margin: 10px 0;
+        }
+
+        .btn-custom {
+            background-color: #2196F3;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #1976D2;
+        }
+    </style>
+</head>
+<body style="background-color: black; overflow-y: auto;">
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <img class="h-8" src="https://raw.githubusercontent.com/ArnavVashisthCodingAccountnew/loremipsum/refs/heads/main/Screenshot_2024-09-29_133806-removebg-preview.png" alt="Logo">
+                    <div class="hidden md:flex space-x-4 ml-4">
+                        <a onClick="alert('This feature is not working yet.')" class="text-gray-700 hover:text-indigo-600">Dashboard</a>
+                        <a href="aboutus.html" class="text-gray-700 hover:text-indigo-600">About Us</a>
+                        <a href="tandc.html" class="text-gray-700 hover:text-indigo-600">Terms and Conditions</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="p-1 text-gray-500 hover:text-indigo-600">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                        </svg>
+                    </button>
+                    <div class="relative">
+                        <button class="flex items-center text-gray-500 focus:outline-none">
+                            <img class="h-8 w-8 rounded-full" src="https://raw.githubusercontent.com/ArnavVashisthCodingAccountnew/loremipsum/refs/heads/main/icons8-user.gif" alt="User Profile">
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Your Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="w-full h-64 overflow-hidden">
+        <video autoplay muted loop>
+            <source src="Search-bar-[remix].mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="hero-section" style="color:white; text-align: center; padding: 5px 20px; background: black;">
+        <h1 style="color:whitesmoke; font-size: 3.5rem; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">
+            Focus on what matters: design
+        </h1>
+        <h1 style="font-size: 2.5rem; font-weight: 300; margin-top: 20px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">
+            Let us code for you.
+        </h1>
+        <br/><br/>
+     <a href="index.html">  <button class="button-now" role="button">Try it now</button></a> 
+        <br/><br/>
+
+    </div>
+
+    
+    <div class="center-container" style="display: flex; justify-content: center; padding: 20px;">
+        <div class="grid-container rounded-lg" style="max-width: 1200px; width: 100%;">
+            <div class="card">
+                <img src="data:image/png;base64,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" class="card-img-top"  style="height:200px;" alt="Card Image">
+                <div class="card-body">
+                    <h5 class="card-title">Blazingly fast</h5>
+                    <p class="card-text">Converts wireframes to code in seconds.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="data:image/jpeg;base64,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"  style="height:200px;" class="card-img-top" alt="Card Image">
+                <div class="card-body">
+                    <h5 class="card-title">Focus</h5>
+                    <p class="card-text">Encapsulating loremipsum's central message, it allows you to focus on what's important.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://pngimagesfree.com/wp-content/uploads/Gemini-Ai-Logo-SVG-Vector--1007x1024.png
+                " class="card-img-top" alt="Card Image">
+                <div class="card-body">
+                    <h5 class="card-title">Powered by Gemini</h5>
+                    <p class="card-text">Powered by Gemini, the best coding model known to Man.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://img.icons8.com/?size=160&id=yToAmNUynDqr&format=png"  style="height:250px;" class="card-img-top" alt="Card Image">
+                <div class="card-body">
+                    <h5 class="card-title">Compatible</h5>
+                    <p class="card-text">Combatible with HTML/CSS,React,Vue,Angular,Flutter,Native IOS/Andriod</p>
+                </div>
+        </div>
+    </div>
+    <script>
+      
+    </script>
+</body>
+</html>
