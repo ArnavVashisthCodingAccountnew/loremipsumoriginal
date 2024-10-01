@@ -14,4 +14,4 @@ Bye. and btw, do not compare yourself to anyone except your past.
 
 bye and have a good day :)
 
-- Arnav Vashisth, web developer
+Arnav Vashisth, web developer
