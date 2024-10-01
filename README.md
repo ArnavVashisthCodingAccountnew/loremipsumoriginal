@@ -11,6 +11,8 @@ but is this post bragging my acheivement?
 No. I wrote this to inspire you, to build something cool and go against the system.
 
 Bye. and btw, do not compare yourself to anyone except your past.
+Keep learning since that is what matters.
+If you believe you can improve this project, initiate a pull request.
 
 bye and have a good day :)
 
