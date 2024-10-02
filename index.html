@@ -1,122 +1,68 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wireframe to Code Converter</title>
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            overflow: hidden; /* Prevent body scroll */
-        }
-        #canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Background */
-        }
-        main {
-            position: relative;
-            max-width: 800px;
-            width: 90%;
-            text-align: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1; /* Foreground */
-            overflow-y: auto; /* Enable vertical scrolling */
-            max-height: 90vh; /* Limit height to prevent overflow */
-        }
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .image-picker, .prompt-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .prompt-box textarea {
-            resize: vertical;
-            min-height: 100px;
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-        select {
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .output {
-            background-color: rgba(250, 250, 250, 0.9);
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            white-space: pre-wrap;
-            overflow-x: auto;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-    </style>
-  <script type="module" crossorigin src="/assets/index-a39f4e8c.js"></script>
-  <link rel="stylesheet" href="/assets/index-d2cc66c3.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Screen Website</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+    }
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+    #fullscreen-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 999;
+      padding: 10px 20px;
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-    <main>
-        <h1>Wireframe to Code Converter</h1>
-        <form id="wireframeForm">
-            <div class="image-picker">
-                <input type="file" accept="image/*" id="wireframeImage" required>
-            </div>
-            <div class="prompt-box">
-                <textarea name="description" placeholder="Describe the wireframe or provide additional context"></textarea>
-                <select name="targetLanguage" style="align-self:center;">
-                    <option value="html">HTML/CSS</option>
-                    <option value="react">React</option>
-                    <option value="vue">Vue</option>
-                    <option value="angular">Angular</option>
-                    <option value="flutter">Flutter</option>
-                    <option value="native">Native iOS/Android</option>
-                </select>
-                <br/>                <br/>
-                <br/>
-                <br/>
 
-                <button type="submit">Convert to Code</button>
-            </div>
-        </form>
-        <div class="output" id="codeOutput"></div>
-    </main>
+<button id="fullscreen-btn">Go Full Screen</button>
 
-    
-    
+<!-- Embed your website -->
+<iframe src="https://loremipsum9999999999999999999999999999999.netlify.app/index.html" id="content"></iframe>
+
+<script>
+  const iframe = document.getElementById('content');
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+  // Function to toggle full-screen mode
+  function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        alert(`Error attempting to enable full-screen mode: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
+  // Event listener for full-screen button
+  fullscreenBtn.addEventListener('click', toggleFullScreen);
+
+  // Automatically hide the fullscreen button after entering fullscreen
+  document.addEventListener('fullscreenchange', () => {
+    if (document.fullscreenElement) {
+      fullscreenBtn.style.display = 'none';
+    } else {
+      fullscreenBtn.style.display = 'block';
+    }
+  });
+</script>
+
 </body>
 </html>
