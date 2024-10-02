@@ -13,58 +13,35 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transform: translate(-50%, -50%);
-        }
-        #fullscreenBtn {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 1000;
-            padding: 10px 20px;
-            background-color: black;
-            color: white;
-            border: none;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <button id="fullscreenBtn">Go Fullscreen</button>
-    <video id="myVideo" autoplay muted>
-        <source src="https://arnavvashisthcodingaccountnew.github.io/loremipsumoriginal/Simple-Dot-%5Bremix%5D%20(1).mp4" type="video/mp4">
+    <video id="myVideo"  autoplay>
+        <source src="Simple-Dot-[remix](1).mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-
     <script>
         const video = document.getElementById('myVideo');
-        const fullscreenBtn = document.getElementById('fullscreenBtn');
 
-        // Function to request fullscreen
-        function requestFullscreen() {
-            const requestFullscreen = video.requestFullscreen || video.mozRequestFullScreen || video.webkitRequestFullscreen || video.msRequestFullscreen;
-            if (requestFullscreen) {
-                requestFullscreen.call(video).catch((err) => {
-                    console.error(`Fullscreen request failed: ${err.message}`);
-                });
+        video.addEventListener('play', () => {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                video.msRequestFullscreen();
             }
-        }
-
-        // Autoplay and attempt fullscreen when the video is ready
-        video.addEventListener('loadeddata', () => {
-            video.play(); // Ensure the video starts playing
-            requestFullscreen(); // Attempt to go fullscreen
         });
-
-        // Button click to go fullscreen
-        fullscreenBtn.addEventListener('click', requestFullscreen);
-
-        // Redirect to 'lander.html' once the video ends
-        video.addEventListener('ended', () => {
-            window.location.href = 'lander.html';
-        });
+video.addEventListener('ended', () => {
+    window.location.href = 'lander.html';
+});
     </script>
 </body>
 </html>
