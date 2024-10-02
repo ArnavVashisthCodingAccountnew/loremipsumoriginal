@@ -13,21 +13,23 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             object-fit: cover;
             transform: translate(-50%, -50%);
         }
     </style>
 </head>
 <body>
-    <video id="myVideo"  autoplay>
-        <source src="dist/Search-bar-[remix] copy 2.mp4" type="video/mp4">
+    <video id="myVideo" autoplay>
+            <source src="Simple=Dot=[remix](1).mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+
     <script>
         const video = document.getElementById('myVideo');
 
+        // Automatically request fullscreen when the video starts playing
         video.addEventListener('play', () => {
             if (video.requestFullscreen) {
                 video.requestFullscreen();
@@ -39,9 +41,11 @@
                 video.msRequestFullscreen();
             }
         });
-video.addEventListener('ended', () => {
-    window.location.href = 'lander.html';
-});
+
+        // Redirect to 'lander.html' once the video ends
+        video.addEventListener('ended', () => {
+            window.location.href = 'lander.html';
+        });
     </script>
 </body>
 </html>
