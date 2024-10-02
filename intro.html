@@ -18,9 +18,21 @@
             object-fit: cover;
             transform: translate(-50%, -50%);
         }
+        #fullscreenBtn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <button id="fullscreenBtn">Go Fullscreen</button>
     <video id="myVideo" autoplay muted>
         <source src="https://arnavvashisthcodingaccountnew.github.io/loremipsumoriginal/Simple-Dot-%5Bremix%5D%20(1).mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -28,19 +40,26 @@
 
     <script>
         const video = document.getElementById('myVideo');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
 
-        // Attempt to request fullscreen when the video starts playing
-        video.addEventListener('play', () => {
+        // Function to request fullscreen
+        function requestFullscreen() {
             const requestFullscreen = video.requestFullscreen || video.mozRequestFullScreen || video.webkitRequestFullscreen || video.msRequestFullscreen;
-
             if (requestFullscreen) {
                 requestFullscreen.call(video).catch((err) => {
                     console.error(`Fullscreen request failed: ${err.message}`);
                 });
-            } else {
-                console.log('Fullscreen API is not supported.');
             }
+        }
+
+        // Autoplay and attempt fullscreen when the video is ready
+        video.addEventListener('loadeddata', () => {
+            video.play(); // Ensure the video starts playing
+            requestFullscreen(); // Attempt to go fullscreen
         });
+
+        // Button click to go fullscreen
+        fullscreenBtn.addEventListener('click', requestFullscreen);
 
         // Redirect to 'lander.html' once the video ends
         video.addEventListener('ended', () => {
