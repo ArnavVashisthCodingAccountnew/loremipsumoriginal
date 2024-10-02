@@ -21,24 +21,24 @@
     </style>
 </head>
 <body>
-    <video id="myVideo" autoplay>
-            <source src="Simple-Dot-[remix](1).mp4" type="video/mp4">
+    <video id="myVideo" autoplay muted>
+        <source src="https://arnavvashisthcodingaccountnew.github.io/loremipsumoriginal/Simple-Dot-%5Bremix%5D%20(1).mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <script>
         const video = document.getElementById('myVideo');
 
-        // Automatically request fullscreen when the video starts playing
+        // Attempt to request fullscreen when the video starts playing
         video.addEventListener('play', () => {
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.mozRequestFullScreen) { // Firefox
-                video.mozRequestFullScreen();
-            } else if (video.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-                video.webkitRequestFullscreen();
-            } else if (video.msRequestFullscreen) { // IE/Edge
-                video.msRequestFullscreen();
+            const requestFullscreen = video.requestFullscreen || video.mozRequestFullScreen || video.webkitRequestFullscreen || video.msRequestFullscreen;
+
+            if (requestFullscreen) {
+                requestFullscreen.call(video).catch((err) => {
+                    console.error(`Fullscreen request failed: ${err.message}`);
+                });
+            } else {
+                console.log('Fullscreen API is not supported.');
             }
         });
 
