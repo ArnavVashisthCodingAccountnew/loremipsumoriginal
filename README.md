@@ -1,5 +1,7 @@
 Hello everyone!
 
+NOTE:- THIS PROJECT IS PARTICIPATING IN HACKTOBERFEST 2024
+
 Many of you might be thinking, 
 1. What is this project about?
 2. Why should I care?
